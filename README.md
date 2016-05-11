@@ -14,3 +14,6 @@ This is just a tweaked version of the core Statamic driver.
 
 #### Setup
 If your site is in a folder other than `{{ your_driver_path }}/html`, update `$this->dir = '/html';` accordingly.
+
+### Statamic v1
+See [Statamic](#statamic).
