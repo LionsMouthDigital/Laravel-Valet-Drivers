@@ -2,7 +2,7 @@
 Our custom drivers for [Laravel Valet](https://laravel.com/docs/master/valet).
 
 ## Installation
-1. Clone this repo in `~/.valet/Drivers`.
+1. `git clone git@github.com:LionsMouthDigital/Laravel-Valet-Drivers.git ~/.valet/Drivers`.
 2. Follow any driver-specific setup instructions below.
 3. Prosper.
 
