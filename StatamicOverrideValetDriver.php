@@ -30,10 +30,10 @@ class StatamicOverrideValetDriver extends ValetDriver
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
-        if (strpos($uri, $this->dir . '/site') === 0 && strpos($uri, $this->dir . '/site/themes') !== 0) {
+        if (strpos($uri, '/site') === 0 && strpos($uri, '/site/themes') !== 0) {
             return false;
 
-        } elseif (strpos($uri, $this->dir . '/local') === 0 || strpos($uri, $this->dir . '/statamic') === 0) {
+        } elseif (strpos($uri, '/local') === 0 || strpos($uri, '/statamic') === 0) {
             return false;
 
         } elseif (file_exists($staticFilePath = $sitePath . $this->dir . $uri)) {
@@ -62,7 +62,7 @@ class StatamicOverrideValetDriver extends ValetDriver
 
         $_SERVER['SCRIPT_NAME'] = $this->dir . '/index.php';
 
-        if (strpos($_SERVER['REQUEST_URI'], $this->dir . '/index.php') === 0) {
+        if (strpos($_SERVER['REQUEST_URI'], '/index.php') === 0) {
             $_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], 10);
         }
 
@@ -70,7 +70,7 @@ class StatamicOverrideValetDriver extends ValetDriver
             $uri = '/';
         }
 
-        if ($uri === $this->dir . '/installer.php') {
+        if ($uri === '/installer.php') {
             return $sitePath . $this->dir . '/installer.php';
         }
 
