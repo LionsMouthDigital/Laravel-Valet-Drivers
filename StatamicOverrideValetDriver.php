@@ -30,7 +30,7 @@ class StatamicOverrideValetDriver extends ValetDriver
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
-        if (strpos($uri, '/site') === 0 && strpos($uri, '/site/themes') !== 0) {
+        if (strpos($uri, '/site') === 0 && strpos($uri, '/site/themes') !== 0 && strpos($uri, '/site/addons') === 0) {
             return false;
 
         } elseif (strpos($uri, '/local') === 0 || strpos($uri, '/statamic') === 0) {
