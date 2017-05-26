@@ -4,6 +4,7 @@ class StatamicOverrideValetDriver extends ValetDriver
 {
     public function __construct()
     {
+        ini_set('memory_limit', '250M');
         $this->dir = '/html';
     }
 
