@@ -13,7 +13,7 @@ class StatamicV1OverrideValetDriver extends ValetDriver
      * @param  string  $sitePath
      * @param  string  $siteName
      * @param  string  $uri
-     * @return void
+     * @return bool
      */
     public function serves($sitePath, $siteName, $uri)
     {
@@ -37,7 +37,7 @@ class StatamicV1OverrideValetDriver extends ValetDriver
             return false;
         }
 
-        if ($this->isActualFile($staticFilePath = $sitePath . $this->dir . $uri)) {
+        if ($this->isActualFile($staticFilePath = $uri)) {
             return $staticFilePath;
         }
 
