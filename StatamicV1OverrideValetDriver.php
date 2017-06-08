@@ -17,7 +17,9 @@ class StatamicV1OverrideValetDriver extends ValetDriver
      */
     public function serves($sitePath, $siteName, $uri)
     {
-        return file_exists($sitePath . $this->dir . '/_app/core/statamic.php');
+        $sitePath .= $this->dir;
+
+        return file_exists($sitePath.'/_app/core/statamic.php');
     }
 
     /**
@@ -30,6 +32,8 @@ class StatamicV1OverrideValetDriver extends ValetDriver
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
+        $sitePath .= $this->dir;
+
         if (strpos($uri, '/_add-ons') === 0 || strpos($uri, '/_app') === 0 || strpos($uri, '/_content') === 0 ||
             strpos($uri, '/_cache') === 0 || strpos($uri, '/_config') === 0 || strpos($uri, '/_logs') === 0 ||
             $uri === '/admin'
@@ -37,7 +41,7 @@ class StatamicV1OverrideValetDriver extends ValetDriver
             return false;
         }
 
-        if ($this->isActualFile($staticFilePath = $uri)) {
+        if ($this->isActualFile($staticFilePath = $sitePath.$uri)) {
             return $staticFilePath;
         }
 
@@ -54,20 +58,22 @@ class StatamicV1OverrideValetDriver extends ValetDriver
      */
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
+        $sitePath .= $this->dir;
+
         if (strpos($uri, '/admin.php') === 0) {
             $_SERVER['SCRIPT_NAME'] = '/admin.php';
 
-            return $sitePath . $this->dir . '/admin.php';
+            return $sitePath.'/admin.php';
         }
 
         if ($uri === '/admin') {
             $_SERVER['SCRIPT_NAME'] = '/admin/index.php';
 
-            return $sitePath . $this->dir . '/admin/index.php';
+            return $sitePath.'/admin/index.php';
         }
 
         $_SERVER['SCRIPT_NAME'] = '/index.php';
 
-        return $sitePath . $this->dir . '/index.php';
+        return $sitePath.'/index.php';
     }
 }
